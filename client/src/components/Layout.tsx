@@ -4,17 +4,20 @@ import Footer from "./essentials/Footer.tsx";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  display: grid;
+  display: flex;
   height: 100vh;
-  grid-template-rows: auto 1fr auto;
+  padding: 1rem;
+  
 `;
 
 export default function Layout() {
   return (
     <Wrapper>
       <Navbar />
-      <Outlet />
-      <Footer />
+      <div>
+        <Outlet />
+        <Footer />
+      </div>
     </Wrapper>
   );
 }
