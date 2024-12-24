@@ -1,17 +1,23 @@
 import mysql from "mysql2";
+import dotenv from "dotenv";
+import { userTable } from "../models/userModel";
+
+dotenv.config();
 
 export const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "12345678",
-  database: "buySutraDB",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
 export function connectToDB() {
-  try {
-    connection.connect();
-    console.log("Connection to DB Success");
-  } catch (e) {
-    console.log(`Error connecting to DB: ${e}`);
-  }
+  connection.connect((err) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    console.log("Connected to DB");
+    userTable();
+  });
 }

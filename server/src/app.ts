@@ -1,13 +1,15 @@
 import cors from "cors";
 import dotenv from "dotenv";
+import helmet from "helmet";
 import express from "express";
 import logger from "morgan";
+import authRoute from "./routes/authRoute";
 import userRoute from "./routes/userRoute";
 import adminRoute from "./routes/adminRoute";
 import productsRoute from "./routes/productsRoute";
 
+import { connectToDB } from "./utils/db";
 import { StatusCode } from "./enums/statusCodes";
-import {connectToDB} from "./utils/db";
 
 dotenv.config({ path: ".env" });
 
@@ -16,20 +18,25 @@ const app = express();
 // Parsing JSON
 app.use(express.json());
 
+// Adding security headers
+app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
+
 // Allowing Cors
 app.use(cors());
 
 // Logging
-app.use(logger("combined"));
+app.use(logger("common"));
 
 // DB Connection
 connectToDB();
 
 // Routes
-app.use("/api/v1/admin", adminRoute);
+app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/user", userRoute);
+app.use("/api/v1/admin", adminRoute);
 app.use("/api/v1/products", productsRoute);
 
+// Serving Images
 app.use("/uploads", express.static("uploads"));
 
 app.all("*", (req, res) => {
@@ -42,5 +49,5 @@ app.all("*", (req, res) => {
 const PORT = process.env.PORT || 6969;
 
 app.listen(PORT, () => {
-  console.log("Server running on port 3000");
+  console.log(`Server running on port ${PORT}`);
 });
