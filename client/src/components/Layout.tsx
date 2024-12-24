@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "./ui/Navbar.tsx";
-import Footer from "./ui/Footer.tsx";
+import Navbar from "./essentials/Navbar.tsx";
+import Footer from "./essentials/Footer.tsx";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
