@@ -12,6 +12,8 @@ export function createNewUser(user: newUserType) {
 
   connection.query(newUser, [user], function (err) {
     if (err) console.log("Error in inserting user", err);
-    else console.log("User creadted!");
+    else {
+      console.log("User creadted!");
+    }
   });
 }
