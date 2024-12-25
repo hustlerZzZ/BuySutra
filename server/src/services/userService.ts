@@ -29,8 +29,8 @@ export async function createNewUser(user: newUserType): Promise<number> {
   });
 }
 
-export async function findUserByEmail(userEmail: string): Promise<User | null> {
-  const userQuery = `SELECT * FROM users WHERE email = ?`;
+export async function findUser(findBy: string, userEmail: string): Promise<User | null> {
+  const userQuery = `SELECT * FROM users WHERE ${findBy} = ?`;
 
   return new Promise((resolve, reject) => {
     connection.query(userQuery, [userEmail], function (err, res) {
