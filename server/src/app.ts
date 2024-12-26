@@ -1,14 +1,14 @@
 import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
-import express from "express";
 import logger from "morgan";
+import express from "express";
+import { connectToDB } from "./utils/db";
 import authRoute from "./routes/authRoute";
 import userRoute from "./routes/userRoute";
 import adminRoute from "./routes/adminRoute";
 import productsRoute from "./routes/productsRoute";
 
-import { connectToDB } from "./utils/db";
 import { StatusCode } from "./enums/statusCodes";
 
 dotenv.config({ path: ".env" });
