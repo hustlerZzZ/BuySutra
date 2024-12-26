@@ -9,15 +9,18 @@ const Wrapper = styled.div`
   padding: 1rem;
   
 `;
+const Body = styled.div`
+  width: 100%;
+`
 
 export default function Layout() {
   return (
     <Wrapper>
       <Navbar />
-      <div>
+      <Body>
         <Outlet />
         <Footer />
-      </div>
+      </Body>
     </Wrapper>
   );
 }

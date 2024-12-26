@@ -1,13 +1,19 @@
 import Logo from "../Logo.tsx";
 import styled from "styled-components";
 import { GoHomeFill, GoSearch } from "react-icons/go";
+import { Link } from "react-router-dom";
+import { AiFillProduct } from "react-icons/ai";
+import { IoChatbox } from "react-icons/io5";
+import { MdContactPage, MdLiveHelp } from "react-icons/md";
+import { FaGear } from "react-icons/fa6";
+import { HiOutlineLogin } from "react-icons/hi";
 
 const Nav = styled.nav`
   display: flex;
   padding: 1rem;
 
   flex-direction: column;
-  width: 20rem;
+  width: 18rem;
   background-color: #f9fafa;
   border-radius: 7px;
 `;
@@ -34,16 +40,28 @@ const NavTitle = styled.div`
   color: #ababac;
 `;
 const NavItems = styled.div`
-margin: 1rem;
+  margin: 1rem;
+  color: #a5a6a8;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 `;
 const NavItem = styled.div`
-display: flex;
-align-items: center;
-
+  display: flex;
+  align-items: center;
 `;
 
-const NavItemName =styled.div`
+const NavItemName = styled(Link)`
   margin-left: 1rem;
+  text-decoration: none;
+  color: #a5a6a8;
+`;
+const Wrapper = styled.div`
+height: 100%;
+  display:  flex;
+  flex-direction: column;
+  justify-content: space-between;
+
 `
 export default function Navbar() {
   return (
@@ -54,15 +72,47 @@ export default function Navbar() {
 
         <SearchInput type="text" placeholder="Search" />
       </SearchBar>
-      <NavContainer>
-        <NavTitle>Menu</NavTitle>
+<Wrapper>
+<NavContainer>
+        <NavTitle>MENU</NavTitle>
         <NavItems>
           <NavItem>
-            <GoHomeFill />
-            <NavItemName>Home</NavItemName>
+            <GoHomeFill size={22} />
+            <NavItemName to="/">Home</NavItemName>
+          </NavItem>
+          <NavItem>
+            <AiFillProduct size={22} />
+            <NavItemName to="/products">Products</NavItemName>
+          </NavItem><NavItem>
+            <IoChatbox size={22} />
+            <NavItemName to="/About">About us</NavItemName>
+          </NavItem>
+          <NavItem>
+            <MdContactPage size={22} />
+            <NavItemName to="/contact">Contact us</NavItemName>
           </NavItem>
         </NavItems>
       </NavContainer>
+      <NavContainer>
+
+        <NavTitle>OTHERS</NavTitle>
+        <NavItems>
+          <NavItem>
+            <MdLiveHelp size={20} />
+            <NavItemName to="/">Get Help</NavItemName>
+          </NavItem>
+          <NavItem>
+            <FaGear size={20} />
+            <NavItemName to="/products">Settings</NavItemName>
+          </NavItem><NavItem>
+            <HiOutlineLogin  size={20} />
+            <NavItemName to="/About">Log out</NavItemName>
+          </NavItem>
+         
+        </NavItems>
+      </NavContainer>
+</Wrapper>
+     
     </Nav>
   );
 }

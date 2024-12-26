@@ -19,7 +19,7 @@ export default function Logo() {
   return (
     <Wrapper>
       <Img src="/logo.jpg" alt="logo" />
-      <Span>ShopWave</Span>
+      <Span>BuySutra</Span>
     </Wrapper>
   );
 }
