@@ -1,6 +1,7 @@
 import mysql from "mysql2";
 import dotenv from "dotenv";
 import { userTable } from "../models/userModel";
+import { productTable } from "../models/productModel";
 
 dotenv.config();
 
@@ -19,5 +20,6 @@ export function connectToDB() {
     }
     console.log("Connected to DB");
     userTable();
+    productTable();
   });
 }
