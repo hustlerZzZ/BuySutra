@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   display: grid;
   height: 100vh;
   grid-template-rows: auto 1fr auto;
+ 
 `;
 
 export default function Layout() {
