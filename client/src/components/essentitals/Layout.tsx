@@ -7,7 +7,7 @@ import { useAppSelector } from "../../hooks/reduxHook";
 export default function Layout() {
   const displayAlert = useAppSelector((state) => state.alerts.value);
   return (
-    <div className="h-screen grid-rows-[auto_1fr_auto] grid">
+    <div className="h-screen grid-rows-[auto_auto_1fr_auto] grid">
       {displayAlert && <Alerts />}
       <Navbar />
       <Outlet />
