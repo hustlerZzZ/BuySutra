@@ -2,21 +2,21 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
 export interface AlertState {
-  value: boolean;
+    value: boolean;
 }
 
 const initialState: AlertState = {
-  value: true,
+    value: true,
 };
 
 const alertControlSlice = createSlice({
-  name: "alertControls",
-  initialState,
-  reducers: {
-    setAlert(state) {
-      state.value = !state.value;
+    name: "alertControls",
+    initialState,
+    reducers: {
+        setAlert(state) {
+            state.value = !state.value;
+        },
     },
-  },
 });
 
 export const { setAlert } = alertControlSlice.actions;

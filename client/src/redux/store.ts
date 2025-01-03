@@ -2,9 +2,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import alertsReducer from "./slice/alertControls";
 
 export const store = configureStore({
-  reducer: {
-    alerts: alertsReducer,
-  },
+    reducer: {
+        alerts: alertsReducer,
+    },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
